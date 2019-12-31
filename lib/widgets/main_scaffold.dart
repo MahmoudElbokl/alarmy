@@ -8,17 +8,17 @@ class MainScaffold extends StatelessWidget {
   final Widget leading;
   final TabBar tabBar;
 
-  MainScaffold(
-      {this.appBarTitle,
-      this.appBarAction,
-      this.child,
-      this.floatingButton,
-      this.leading,
-      this.tabBar});
+  MainScaffold({this.appBarTitle,
+    this.appBarAction,
+    this.child,
+    this.floatingButton,
+    this.leading,
+    this.tabBar});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         bottom: (tabBar == null) ? null : tabBar,
         title: Text(
