@@ -49,6 +49,7 @@ class _AddAlarmScreenState extends State<AddAlarmScreen> {
                 audioPath: AddAlarmScreen.selectedMusic.values.first,
               ),
             );
+            repeatProvider.returnToDefault();
           },
         ),
       ],

@@ -39,12 +39,15 @@ class Repeat with ChangeNotifier {
     return {..._daysActivity};
   }
 
-  set daysActivity(Map value) {
-    _daysActivity = value;
-  }
-
   List<int> _activeDays = [];
 
+  returnToDefault() {
+    defaultActive();
+    _activeDays = [];
+    print("$_daysActivity after default");
+    print("$_activeDays after default");
+    notifyListeners();
+  }
   List<int> get activeDays {
     _daysActivity.forEach((k, v) {
       if (v == true) {
@@ -138,18 +141,19 @@ class Repeat with ChangeNotifier {
         }
       }
     } else if (alarmTime.isAfter(DateTime.now())) {
-      if (activeDays.length == 1) {
-        if (activeDays.first == Repeat.day) {
-          alarmTimes.add(0);
-        } else {
-          alarmTimes.add(activeDays.first - Repeat.day);
-        }
-      } else {
+//      if (activeDays.length == 1) {
+//        if (activeDays.first == Repeat.day) {
+//          alarmTimes.add(0);
+//        } else {
+//          alarmTimes.add(activeDays.first - Repeat.day);
+//        }
+//      } else {
         for (var day in activeDays) {
           alarmTimes.add(day - Repeat.day);
         }
-      }
+//      }
     }
+    print(alarmTimes);
     return alarmTimes;
   }
 }
